@@ -124,22 +124,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-AWS_ACCESS_KEY_ID = 'DO004YBZTTUTRFZJ7AHT'
-AWS_SECRET_ACCESS_KEY = '+nkHTuk9tirXP2gZo7jmgLhTQNx6348vwCkYOrTLYjE'
-AWS_STORAGE_BUCKET_NAME = 'images'
-AWS_DEFAULT_ACL = 'public-read' 
-AWS_S3_ENDPOINT_URL = 'https://image-convolution-demo.sgp1.digitaloceanspaces.com' # Make sure nyc3 is correct
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400'
-}
 
-AWS_STATIC_LOCATION = 'static/'
-STATIC_URL = '%s/%s' % (AWS_S3_ENDPOINT_URL, AWS_STATIC_LOCATION)
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# STATIC_URL = 'static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-# STATICFILES_DIRS = [os.path.join(BASE_DIR,'polls/static'),]
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'polls/static'),]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
