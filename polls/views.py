@@ -49,8 +49,8 @@ def convolve(request):
             'kernel' : kernel_value,
         }
       
-        cv2.imwrite(os.path.join(settings.STATICFILES_DIRS[0], 'polls/cv2_new_img.png'), new_img)
-        with open(os.path.join(settings.STATICFILES_DIRS[0], 'polls/cv2_new_img.jpg'), 'rb') as file_contents:
+        cv2.imwrite(os.path.join(settings.BASE_DIR, 'cv2_new_img.png'), new_img)
+        with open(os.path.join(settings.BASE_DIR], 'cv2_new_img.jpg'), 'rb') as file_contents:
             client.put_object(Bucket='images',Key='new_cv2_new_img.jpg',Body=file_contents,ACL='public-read',ContentType='image/jpg')        
 
         return render(request, 'polls/image_convolution.html', context)
