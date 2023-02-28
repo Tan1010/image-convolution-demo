@@ -29,7 +29,7 @@ def convolve(request):
         
         pixel = np.array(img.getdata())
         pixel.resize(img.size[1],img.size[0])
-        kernel = np.array([[int(kernel_value[0]),int(kernel_value[1]),int(kernel_value[2])], [int(kernel_value[3]),int(kernel_value[4]),int(kernel_value[5])], [int(kernel_value[6]),int(kernel_value[7]),int(kernel_value[8])]])
+        kernel = np.array([[float(kernel_value[0]),float(kernel_value[1]),float(kernel_value[2])], [float(kernel_value[3]),float(kernel_value[4]),float(kernel_value[5])], [float(kernel_value[6]),float(kernel_value[7]),float(kernel_value[8])]])
 
         new_img = conv(pixel, kernel)
 
