@@ -10,6 +10,18 @@ from django.conf import settings
 from django.templatetags.static import static
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
+from boto3 import session
+from botocore.client import Config
+
+ACCESS_ID = 'DO004YBZTTUTRFZJ7AHT'
+SECRET_KEY = '+nkHTuk9tirXP2gZo7jmgLhTQNx6348vwCkYOrTLYjE'
+
+session = session.Session()
+client = session.client('s3',
+                        region_name='sgp1',
+                        endpoint_url='https://image-convolution-demo.sgp1.digitaloceanspaces.com',
+                        aws_access_key_id=ACCESS_ID,
+                        aws_secret_access_key=SECRET_KEY)
 
 
 def index(request):
@@ -38,6 +50,8 @@ def convolve(request):
         }
       
         cv2.imwrite(os.path.join(settings.STATICFILES_DIRS[0], 'polls/cv2_new_img.png'), new_img)
+        with open(os.path.join(settings.STATICFILES_DIRS[0], 'polls/cv2_new_img.jpg'), 'rb') as file_contents:
+            client.put_object(Bucket='images',Key='new_cv2_new_img.jpg',Body=file_contents,ACL='public-read',ContentType='image/jpg')        
 
         return render(request, 'polls/image_convolution.html', context)
 
