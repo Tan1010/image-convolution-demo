@@ -35,7 +35,7 @@
                 </canvas>
             </div>
             <div class="col-sm-6">
-                <img src="{% static 'polls/cv2_new_img.png' %}" alt="My image">
+                <img src="https://image-convolution-demo.sgp1.digitaloceanspaces.com/images%2Fnew_cv2_new_img.jpg" alt="My image">
             </div>
         </div>
         <div>
@@ -63,7 +63,8 @@
     </div>
     <script>
         var newImg = new Image;
-        newImg.src="{% static 'polls/flower.jpg' %}"
+//         newImg.src="{% static 'polls/flower.jpg' %}"
+        newImg.src="https://image-convolution-demo.sgp1.digitaloceanspaces.com/images/flower.jpg"
         newImg.crossOrigin = "Anonymous";
         
         function loadImage() {
