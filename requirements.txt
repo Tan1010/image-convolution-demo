@@ -8,7 +8,7 @@ importlib-resources==5.12.0
 kiwisolver==1.4.4
 matplotlib==3.7.0
 numpy==1.24.2
-opencv-python==4.7.0.72
+opencv-python-headless==4.7.0.72
 packaging==23.0
 Pillow==9.4.0
 pyparsing==3.0.9
