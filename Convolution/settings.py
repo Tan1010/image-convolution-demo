@@ -30,7 +30,7 @@ SECURE_SSL_REDIRECT = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['seahorse-app-8phu2.ondigitalocean.app']
+ALLOWED_HOSTS = ['seahorse-app-8phu2.ondigitalocean.app', 'image-convolution-demo.com']
 
 
 # Application definition
