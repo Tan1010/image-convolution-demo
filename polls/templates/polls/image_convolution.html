@@ -36,7 +36,7 @@
 </head>
 <body onload="loadImage()">
     <div class="container-fluid">
-        <a class="btn btn-primary" id="home" href="/" role="button">Home</a>
+        <a class="btn btn-primary" id="home" href="/{{now_time}}" role="button">Home</a>
 
         <h1 class="text-center">Convolution Demo</h1>
         <div class="row">
@@ -45,7 +45,7 @@
                 </canvas>
             </div>
             <div class="col-sm-6">
-                <img src="https://image-convolution-demo.sgp1.digitaloceanspaces.com/images%2Fcv2_new_img.jpg" alt="My image">
+                <img id="convolved_image" alt="My image">
             </div>
         </div>
         <div>
@@ -73,7 +73,6 @@
     </div>
     <script>
         var newImg = new Image;
-//         newImg.src="{% static 'polls/flower.jpg' %}"
         newImg.src="https://image-convolution-demo.sgp1.digitaloceanspaces.com/images/flower.jpg"
         newImg.crossOrigin = "Anonymous";
         
@@ -83,6 +82,8 @@
             ctx.canvas.width  = newImg.width;
             ctx.canvas.height  = newImg.height;
             ctx.drawImage(newImg,0,0,newImg.width,newImg.height);         
+            document.getElementById('convolved_image').src = "https://image-convolution-demo.sgp1.digitaloceanspaces.com/images%2Fcv2_new_img_"+"{{now_time}}"+".jpg" 
+
         }
 
         
