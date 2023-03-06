@@ -54,7 +54,7 @@ def convolve(request):
         }
       
         image_string = cv2.imencode('.jpg', new_img)[1].tostring()
-        client.put_object(Bucket='images',Key='cv2_new_img.jpg',Body=image_string,ACL='public-read',ContentType='image/jpg')     
+        client.put_object(Bucket='images',Key='cv2_new_img_'+now_time+'.jpg',Body=image_string,ACL='public-read',ContentType='image/jpg') 
         return render(request, 'polls/image_convolution.html', context)
 
 def conv(image, kernel):
