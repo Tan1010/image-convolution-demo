@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from boto3 import session
 from botocore.client import Config
+import time
 
 ACCESS_ID = 'DO004YBZTTUTRFZJ7AHT'
 SECRET_KEY = '+nkHTuk9tirXP2gZo7jmgLhTQNx6348vwCkYOrTLYjE'
@@ -44,9 +45,12 @@ def convolve(request):
         kernel = np.array([[float(kernel_value[0]),float(kernel_value[1]),float(kernel_value[2])], [float(kernel_value[3]),float(kernel_value[4]),float(kernel_value[5])], [float(kernel_value[6]),float(kernel_value[7]),float(kernel_value[8])]])
 
         new_img = conv(pixel, kernel)
+        now_time = str(int(time.time())*1000)
+
 
         context = {
             'kernel' : kernel_value,
+            'now_time': now_time,
         }
       
         image_string = cv2.imencode('.jpg', new_img)[1].tostring()
@@ -73,5 +77,10 @@ def conv(image, kernel):
                     new_image[row][column] = round(np.sum(np.multiply(kernel, temp_array)))
 
     return new_image
+  
+  def deleteImage(request, slug):
+    client.delete_object(Bucket='images',  Key='cv2_new_img_'+slug+'.jpg')
+    return redirect('index')
+
 
 
