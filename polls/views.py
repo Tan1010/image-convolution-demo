@@ -78,7 +78,7 @@ def conv(image, kernel):
 
     return new_image
   
-  def deleteImage(request, slug):
+def deleteImage(request, slug):
     client.delete_object(Bucket='images',  Key='cv2_new_img_'+slug+'.jpg')
     return redirect('index')
 
